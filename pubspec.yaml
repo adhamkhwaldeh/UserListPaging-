@@ -13,6 +13,33 @@ dependencies:
   flutter:
     sdk: flutter
 
+  common_library:
+    path: ./common_library
+
+  user_list_core:
+    path: ./user_list_core
+
+  flutter_hooks_bloc: ^0.16.0
+
+  # Web responsive
+  sizer: ^2.0.11
+
+  # Great library for utilities , observation , navigation and dependencies
+  get: ^4.1.1
+
+  provider: ^6.0.3
+  
+  getwidget: ^2.1.1
+
+  # VelocityX for UI Chain features as swift UI
+  velocity_x: ^3.3.0
+
+  #Shimmer library
+  shimmer: ^2.0.0-nullsafety.0
+
+  # Paging options
+  infinite_scroll_pagination: ^3.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
