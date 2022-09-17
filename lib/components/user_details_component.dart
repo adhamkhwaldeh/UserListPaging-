@@ -19,7 +19,6 @@ class UserDetailsComponent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-
         children: [
           Hero(
             tag: "hero_message_${user.id}",
