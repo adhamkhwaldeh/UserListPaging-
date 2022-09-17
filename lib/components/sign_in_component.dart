@@ -111,7 +111,7 @@ class SignInComponent extends HookWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              L10S.Welcome_to_PropertyMan.tr,
+                              L10S.Welcome_to_owwn_challenge.tr,
                               style: Get.textTheme.headline5?.copyWith(
                                 fontFamily: "Aeonik",
                                 fontWeight: FontWeight.w500,

@@ -30,8 +30,8 @@ class UserListItemBuilder extends HookWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: Get.width / 5.0,
-                  height: Get.width / 5.0,
+                  width: Get.width / 8.0,
+                  height: Get.width / 8.0,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
@@ -52,7 +52,12 @@ class UserListItemBuilder extends HookWidget {
                           ?.copyWith(fontWeight: FontWeight.w600),
                     ).p(DimensHelper.paddingXSM),
                     Text(
-                      model.name ?? "",
+                      model.gender.name ?? "",
+                      style: Get.textTheme.subtitle1
+                          ?.copyWith(fontWeight: FontWeight.w400),
+                    ).p(DimensHelper.paddingXSM),
+                    Text(
+                      model.status.name ?? "",
                       style: Get.textTheme.subtitle1
                           ?.copyWith(fontWeight: FontWeight.w400),
                     ).p(DimensHelper.paddingXSM),
