@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:common_library/helpers/dimens_helper.dart';
+import 'package:owwn_coding_challenge/helpers/routing_helper.dart';
 import 'package:user_list_core/data/models/user.dart';
 import 'package:common_library/di/di.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -29,15 +30,18 @@ class UserListItemBuilder extends HookWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: Get.width / 8.0,
-                  height: Get.width / 8.0,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: NetworkImage(
-                        "https://i.pinimg.com/originals/08/45/81/084581e3155d339376bf1d0e17979dc6.jpg",
+                Hero(
+                  tag: "hero_message_${model.id}",
+                  child: Container(
+                    width: Get.width / 8.0,
+                    height: Get.width / 8.0,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.fitWidth,
+                        image: NetworkImage(
+                          "https://i.pinimg.com/originals/08/45/81/084581e3155d339376bf1d0e17979dc6.jpg",
+                        ),
                       ),
                     ),
                   ),
@@ -72,7 +76,9 @@ class UserListItemBuilder extends HookWidget {
         ),
       ),
     ).onTap(
-      () {},
+      () {
+        RoutingHelper.startUserDetailsComponent(model);
+      },
     );
   }
 }

@@ -37,9 +37,10 @@ class BaseStateObservable2 {
           if (e is DioError) {
             if (e.type == DioErrorType.response) {
               if (e.response?.statusCode == HttpStatus.unauthorized) {
-                BaseErrorResponse res = BaseErrorResponse.fromJson(
-                    Map<String, dynamic>.from(e.response?.data));
-                returnState = BaseStateNotAuthorize(error: res.message ?? "");
+                // BaseErrorResponse res = BaseErrorResponse.fromJson(
+                //     Map<String, dynamic>.from(e.response?.data));
+                // returnState = BaseStateNotAuthorize(error: res.message ?? "");
+                returnState = BaseStateNotAuthorize(error: "Not authorized");
               } else if (e.response?.statusCode == HttpStatus.notFound) {
                 BaseErrorResponse res = BaseErrorResponse.fromJson(
                     Map<String, dynamic>.from(e.response?.data));

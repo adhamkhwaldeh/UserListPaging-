@@ -61,6 +61,10 @@ class SplashComponent extends HookWidget {
       bloc: bloc,
       onEmitted: (context, previous, current) {
         current.maybeMap(
+          notAuthorize: (value) {
+            generalRepo.clearLoggedUser();
+            RoutingHelper.startSignInComponent();
+          },
           loadedSuccessfully: (state) async {
             generalRepo.setLoggedUser(state.data as SignInResponse);
             RoutingHelper.startHomeComponent();
