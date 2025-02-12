@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/foundation.dart' as foundation;
 import 'package:user_list_core/api_services/api_configuration.dart';
 

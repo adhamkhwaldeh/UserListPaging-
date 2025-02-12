@@ -62,10 +62,13 @@ class HomeComponent extends HookWidget {
           },
           listLoadedSuccessfully: (state) {
             if (state.lastPage) {
-              pagingController.appendLastPage(state.data as List<User>);
+              pagingController.appendLastPage(
+                List<User>.from(state.data ),
+                // state.data as List<User>
+                );
             } else {
               pagingController.appendPage(
-                state.data as List<User>,
+               List<User>.from(state.data ),// state.data as List<User>,
                 PagingOptions.nextPage(pagingController.nextPageKey),
               );
             }

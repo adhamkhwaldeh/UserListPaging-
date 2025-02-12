@@ -23,6 +23,10 @@ import 'package:user_list_core/di/network_di.dart' as _i82;
 import 'package:user_list_core/di/network_info_di.dart' as _i3;
 import 'package:user_list_core/di/shared_preferences_di.dart' as _i1060;
 import 'package:user_list_core/repositories/account_repository.dart' as _i58;
+import 'package:user_list_core/repositories/faked/faked_account_repository.dart'
+    as _i447;
+import 'package:user_list_core/repositories/faked/faked_user_repository.dart'
+    as _i551;
 import 'package:user_list_core/repositories/general_repository.dart' as _i146;
 import 'package:user_list_core/repositories/user_repository.dart' as _i1012;
 
@@ -48,6 +52,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i974.Logger>(() => loggerDi.logger);
     gh.lazySingleton<_i361.Dio>(() => networkDi.dio());
     gh.lazySingleton<_i895.Connectivity>(() => networkInfoDi.connectivity);
+    gh.lazySingleton<_i447.FakedAccountRepository>(
+        () => _i447.FakedAccountRepository());
+    gh.lazySingleton<_i551.FakedUserRepository>(
+        () => _i551.FakedUserRepository());
     gh.lazySingleton<_i470.ConnectivityRequestRetrier>(
         () => networkInfoDi.retryConnection(gh<_i895.Connectivity>()));
     gh.lazySingleton<_i873.ApiService>(

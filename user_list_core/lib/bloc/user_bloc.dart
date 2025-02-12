@@ -1,11 +1,9 @@
-import 'dart:io';
 import 'package:user_list_core/bloc/base/base_bloc.dart';
 import 'package:user_list_core/bloc/base_event/base_event.dart';
 import 'package:user_list_core/bloc/base_state/base_state.dart';
 import 'package:user_list_core/bloc/helpers/base_state_helper.dart';
 import 'package:user_list_core/data/responses/user_list_response.dart';
 import 'package:user_list_core/repositories/implementations/iuser_repository.dart';
-import 'package:dio/dio.dart';
 
 class UserBloc extends BaseBloc<BaseEvent, BaseState> {
   final IUserRepository repository;
