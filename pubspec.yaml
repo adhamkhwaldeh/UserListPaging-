@@ -1,0 +1,48 @@
+name: owwn_coding_challenge
+description: OWWN Coding Challenge.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.5
+
+  flutter:
+    sdk: flutter
+
+  user_list_core:
+    path: ./user_list_core
+
+  # Web responsive
+  sizer: ^3.0.5
+
+  # Great library for utilities , observation , navigation and dependencies
+  get: ^4.1.1
+
+  provider: ^6.0.3
+  
+  getwidget: ^5.0.0
+
+  # VelocityX for UI Chain features as swift UI
+  velocity_x: ^4.3.0
+
+  #Shimmer library
+  shimmer: ^3.0.0
+
+  # Paging options
+  infinite_scroll_pagination: ^4.1.0
+
+  # Bloc design pattern
+  flutter_hooks: ^0.20.5
+  hooked_bloc: ^1.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lint: ^2.3.0
+
+flutter:
+  uses-material-design: true
