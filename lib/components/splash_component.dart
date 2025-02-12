@@ -11,8 +11,10 @@ import 'package:user_list_core/bloc/helpers/base_state_helper.dart';
 import 'package:user_list_core/bloc/sign_in_bloc.dart';
 import 'package:user_list_core/data/responses/sign_in_response.dart';
 import 'package:user_list_core/di/di.dart';
+import 'package:user_list_core/di/env.dart';
 import 'package:user_list_core/get_localization/l10S.dart';
 import 'package:user_list_core/repositories/account_repository.dart';
+import 'package:user_list_core/repositories/faked/faked_account_repository.dart';
 import 'package:user_list_core/repositories/general_repository.dart';
 import 'package:user_list_core/widgets/codefirst_progress_dialog.dart';
 
@@ -20,7 +22,9 @@ class SplashComponent extends HookWidget {
   const SplashComponent({super.key});
 
   Future<Timer> startTime(
-      GeneralRepository generalRepo, SignInBloc bloc,) async {
+    GeneralRepository generalRepo,
+    SignInBloc bloc,
+  ) async {
     final SignInResponse? user = await generalRepo.getLoggedUser();
 
     final isLogged = user?.refresh_token != null;
@@ -39,9 +43,14 @@ class SplashComponent extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final generalRepo = getIt<GeneralRepository>();
+    final generalRepo = useMemoized(() => getIt<GeneralRepository>());
     final bloc = useMemoized(
-      () => SignInBloc(getIt<AccountRepository>(), generalRepo),
+      () => SignInBloc(
+        Env.data.useFakeData
+            ? getIt<FakedAccountRepository>()
+            : getIt<AccountRepository>(),
+        generalRepo,
+      ),
     );
 
     final pr = useMemoized(

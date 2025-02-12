@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/foundation.dart' as foundation;
 import 'package:user_list_core/api_services/api_configuration.dart';
 
@@ -20,6 +22,7 @@ class Env {
     debugShowMaterialGrid: false,
     debugApiClient: true,
     apiBaseUrl: ApiConfiguration.baseUrl,
+    useFakeData: true,
   );
 
   static final EnvData prod = EnvData(
@@ -28,6 +31,7 @@ class Env {
     debugShowMaterialGrid: false,
     debugApiClient: false,
     apiBaseUrl: ApiConfiguration.baseUrl,
+    useFakeData: true,
   );
 }
 
@@ -37,6 +41,7 @@ class EnvData {
   final bool debugShowMaterialGrid;
   final bool debugApiClient;
   final String apiBaseUrl;
+  final bool useFakeData;
 
   EnvData({
     required this.debug,
@@ -44,5 +49,7 @@ class EnvData {
     required this.debugShowMaterialGrid,
     required this.debugApiClient,
     required this.apiBaseUrl,
+    required this.useFakeData,
   });
+  
 }

@@ -13,11 +13,13 @@ import 'package:user_list_core/bloc/sign_in_bloc.dart';
 import 'package:user_list_core/data/posts/sign_in_model.dart';
 import 'package:user_list_core/data/responses/sign_in_response.dart';
 import 'package:user_list_core/di/di.dart';
+import 'package:user_list_core/di/env.dart';
 import 'package:user_list_core/extensions/string_extensions.dart';
 import 'package:user_list_core/get_localization/l10S.dart';
 import 'package:user_list_core/helpers/dimensions_helper.dart';
 import 'package:user_list_core/helpers/snack_bar_helper.dart';
 import 'package:user_list_core/repositories/account_repository.dart';
+import 'package:user_list_core/repositories/faked/faked_account_repository.dart';
 import 'package:user_list_core/repositories/general_repository.dart';
 import 'package:user_list_core/widgets/codefirst_progress_dialog.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -27,9 +29,14 @@ class SignInComponent extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final generalRepo = getIt<GeneralRepository>();
+    final generalRepo = useMemoized(() => getIt<GeneralRepository>());
     final bloc = useMemoized(
-      () => SignInBloc(getIt<AccountRepository>(), generalRepo),
+      () => SignInBloc(
+        Env.data.useFakeData
+            ? getIt<FakedAccountRepository>()
+            : getIt<AccountRepository>(),
+        generalRepo,
+      ),
     );
 
     final pr = useMemoized(

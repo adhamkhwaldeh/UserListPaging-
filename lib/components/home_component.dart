@@ -15,14 +15,20 @@ import 'package:user_list_core/bloc/user_bloc.dart';
 import 'package:user_list_core/data/models/user.dart';
 import 'package:user_list_core/data/responses/user_list_response.dart';
 import 'package:user_list_core/di/di.dart';
+import 'package:user_list_core/di/env.dart';
 import 'package:user_list_core/get_localization/l10S.dart';
+import 'package:user_list_core/repositories/faked/faked_user_repository.dart';
 import 'package:user_list_core/repositories/user_repository.dart';
 
 class HomeComponent extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = useMemoized(
-      () => UserBloc(getIt<UserRepository>()),
+      () => UserBloc(
+        Env.data.useFakeData
+            ? getIt<FakedUserRepository>()
+            : getIt<UserRepository>(),
+      ),
     );
 
     final PagingController<int, User> pagingController = useMemoized(
@@ -49,15 +55,19 @@ class HomeComponent extends HookWidget {
               pagingController.appendLastPage(data);
             } else {
               pagingController.appendPage(
-                  data, PagingOptions.nextPage(pagingController.nextPageKey),);
+                data,
+                PagingOptions.nextPage(pagingController.nextPageKey),
+              );
             }
           },
           listLoadedSuccessfully: (state) {
             if (state.lastPage) {
               pagingController.appendLastPage(state.data as List<User>);
             } else {
-              pagingController.appendPage(state.data as List<User>,
-                  PagingOptions.nextPage(pagingController.nextPageKey),);
+              pagingController.appendPage(
+                state.data as List<User>,
+                PagingOptions.nextPage(pagingController.nextPageKey),
+              );
             }
           },
           orElse: () => {},
