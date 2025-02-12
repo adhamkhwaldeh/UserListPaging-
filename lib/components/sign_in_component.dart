@@ -57,7 +57,7 @@ class SignInComponent extends HookWidget {
       },
     );
 
-    final memoModel = useMemoized(() => SignInModel(email: ""));
+    final memoModel = useMemoized(() => SignInModel(email: "xyz@gmail.com"));
 
     final formKey = useMemoized(() => GlobalKey<FormState>());
 
