@@ -86,10 +86,10 @@ Start by installing the required dependencies to your project.
 
 - **Dashboard View**
 
-| !["](./screenshots/Screenshot_listing.jpg) | !["](./screenshots/Screenshot_listing_refresh.jpg) |
+|!["](./screenshots/Screenshot_signin.jpg) | !["](./screenshots/Screenshot_listing.jpg) |
 |-----------------|-----------------|
 
-|!["](./screenshots/Screenshot_signin.jpg) | !["](./screenshots/Screenshot_details.jpg) |
+|!["](./screenshots/Screenshot_listing_refresh.jpg) | !["](./screenshots/Screenshot_details.jpg) |
 |-----------------|-----------------|
 
 ## Authorization
