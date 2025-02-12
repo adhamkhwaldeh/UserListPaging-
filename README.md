@@ -59,10 +59,8 @@ Start by installing the required dependencies to your project.
             debugShowCheckedModeBanner: false,
             debugShowMaterialGrid: false,
             debugApiClient: true,
+            apiBaseUrl: ApiConfiguration.baseUrl,
             useFakeData: true,
-            // apiBaseUrl: ApiConfiguration.propertyManBaseUrl,
-            // apiBaseUrl: "http://localhost:3000/",
-            apiBaseUrl: "http://192.168.255.237:3000/",
         );
 
 ### Step 3: Test the Integration
