@@ -51,15 +51,15 @@ Start by installing the required dependencies to your project.
 ### Step 2: Configure the Integration
 
     You can use the fixed data in the application or create api service to match the solution.
-    Within class Env you have a useMockedApi property.
+    Within class Env you have a useFakeData property.
 
-    To use mocked data set useMockedApi = true as it is by default.
+    To use mocked data set useFakeData = true as it is by default.
         static final EnvData dev = EnvData(
             debug: true,
             debugShowCheckedModeBanner: false,
             debugShowMaterialGrid: false,
             debugApiClient: true,
-            useMockedApi: true,
+            useFakeData: true,
             // apiBaseUrl: ApiConfiguration.propertyManBaseUrl,
             // apiBaseUrl: "http://localhost:3000/",
             apiBaseUrl: "http://192.168.255.237:3000/",
