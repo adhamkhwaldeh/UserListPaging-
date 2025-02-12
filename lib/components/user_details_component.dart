@@ -1,9 +1,8 @@
-import 'package:common_library/helpers/dimens_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:user_list_core/data/models/user.dart';
-import 'package:velocity_x/velocity_x.dart';
 import 'package:get/get.dart';
+import 'package:user_list_core/data/models/user.dart';
+import 'package:user_list_core/helpers/dimensions_helper.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class UserDetailsComponent extends StatelessWidget {
   final User user;
@@ -16,9 +15,6 @@ class UserDetailsComponent extends StatelessWidget {
         title: Text(user.name),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
         children: [
           Hero(
             tag: "hero_message_${user.id}",
@@ -35,22 +31,22 @@ class UserDetailsComponent extends StatelessWidget {
                 ),
               ),
             ),
-          ).p(DimensHelper.paddingSM),
+          ).p(DimensionsHelper.paddingSM),
           Text(
-            user.name ?? "",
-            style:
-                Get.textTheme.subtitle1?.copyWith(fontWeight: FontWeight.w600),
-          ).p(DimensHelper.paddingXSM),
+            user.name,
+            style: Get.textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.w600),
+          ).p(DimensionsHelper.paddingXSM),
           Text(
-            user.gender.name ?? "",
-            style:
-                Get.textTheme.subtitle1?.copyWith(fontWeight: FontWeight.w400),
-          ).p(DimensHelper.paddingXSM),
+            user.gender.name,
+            style: Get.textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.w400),
+          ).p(DimensionsHelper.paddingXSM),
           Text(
-            user.status.name ?? "",
-            style:
-                Get.textTheme.subtitle1?.copyWith(fontWeight: FontWeight.w400),
-          ).p(DimensHelper.paddingXSM),
+            user.status.name,
+            style: Get.textTheme.titleMedium
+                ?.copyWith(fontWeight: FontWeight.w400),
+          ).p(DimensionsHelper.paddingXSM),
         ],
       ).centered(),
     );

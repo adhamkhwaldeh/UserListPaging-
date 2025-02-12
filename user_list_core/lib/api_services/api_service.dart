@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:injectable/injectable.dart';
 import 'package:user_list_core/api_services/api_configuration.dart';
-import 'package:user_list_core/data/models/user.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:user_list_core/data/posts/refresh_model.dart';

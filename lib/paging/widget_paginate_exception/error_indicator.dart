@@ -44,8 +44,8 @@ class ErrorIndicator extends StatelessWidget {
   const ErrorIndicator({
     required this.error,
     required this.onTryAgain,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final dynamic error;
   final VoidCallback onTryAgain;

@@ -1,4 +1,4 @@
-import 'package:common_library/get_localization/base_l10s.dart';
+import 'package:user_list_core/get_localization/base_l10s.dart';
 import 'package:user_list_core/get_localization/l10S.dart';
 import 'package:get/get.dart';
 

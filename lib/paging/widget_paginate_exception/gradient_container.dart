@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class GradientContainer extends StatelessWidget {
   final Widget child;
-  const GradientContainer({Key? key, required this.child}) : super(key: key);
+  const GradientContainer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +15,13 @@ class GradientContainer extends StatelessWidget {
             Colors.white.withAlpha(20),
             Colors.white, //.withAlpha(199),
           ],
-          begin: const FractionalOffset(0.0, 0.0),
-          end: const FractionalOffset(0.0, 1.0),
+          begin: FractionalOffset.topLeft,
+          end: FractionalOffset.bottomLeft,
           stops: const [
             // 0.7,
             0.8,
             1.0,
           ],
-          tileMode: TileMode.clamp,
         ),
       ),
       child: child,

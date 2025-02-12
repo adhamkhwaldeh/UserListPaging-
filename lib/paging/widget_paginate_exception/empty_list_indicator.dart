@@ -37,12 +37,12 @@ import 'package:owwn_coding_challenge/paging/widget_paginate_exception/exception
 
 /// Indicates that no items were found.
 class EmptyListIndicator extends StatelessWidget {
-  const EmptyListIndicator({Key? key}) : super(key: key);
+  const EmptyListIndicator({super.key});
 
   @override
   Widget build(BuildContext context) => const ExceptionIndicator(
         title: 'Too much filtering',
-        message: 'We couldn\'t find any results matching your applied filters.',
+        message: "We couldn't find any results matching your applied filters.",
         assetName: 'assets/empty-box.png',
       );
 }

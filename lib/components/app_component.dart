@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:owwn_coding_challenge/components/splash_component.dart';
 import 'package:sizer/sizer.dart';
 import 'package:user_list_core/di/env.dart';
 import 'package:user_list_core/get_localization/l10S.dart';
 import 'package:user_list_core/get_localization/messages_translations.dart';
-import 'package:common_library/themes/light_theme.dart';
-import 'package:get/get.dart';
+import 'package:user_list_core/themes/light_theme.dart';
 
 class AppComponent extends StatelessWidget {
   const AppComponent({super.key});
@@ -24,7 +24,6 @@ class AppComponent extends StatelessWidget {
             const Locale('en'), // translations will be displayed in that locale
         fallbackLocale: const Locale('en'),
         debugShowCheckedModeBanner: false,
-        enableLog: true,
         // themeMode: ThemeMode.,
         theme: LightTheme.themeData,
         // darkTheme: DarkTheme.themeData,
@@ -34,7 +33,7 @@ class AppComponent extends StatelessWidget {
           debugShowCheckedModeBanner: Env.data.debugShowCheckedModeBanner,
           debugShowMaterialGrid: Env.data.debugShowMaterialGrid,
           // onGenerateRoute: Application.router.generator,
-          home:  SplashComponent(),
+          home:  const SplashComponent(),
           navigatorObservers: [GetObserver()],
           theme: LightTheme.themeData,
           darkTheme: LightTheme.themeData,

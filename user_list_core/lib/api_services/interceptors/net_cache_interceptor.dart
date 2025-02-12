@@ -76,7 +76,7 @@ class CacheObject {
 //   }
 
 //   @override
-//   onError(DioError err) async {
+//   onError(DioException err) async {
 //     // 错误状态不缓存
 //   }
 

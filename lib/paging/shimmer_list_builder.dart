@@ -8,14 +8,13 @@ class ShimmerListBuilder extends HookWidget {
   final Widget cellWidget;
   final int numberOfCells;
 
-  const ShimmerListBuilder(this.cellWidget, this.numberOfCells, {Key? key}) : super(key: key);
+  const ShimmerListBuilder(this.cellWidget, this.numberOfCells, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: const Color(0xFFEDEFF6).withOpacity(0.5), // Color(0x669E9E9E),
-      highlightColor: const Color(0xFFEDEFF6).withOpacity(0.2), //Color(0x229E9E9E),
-      enabled: true,
+      baseColor: const Color(0xFFEDEFF6).withValues(alpha:0.5), // Color(0x669E9E9E),
+      highlightColor: const Color(0xFFEDEFF6).withValues(alpha:0.2), //Color(0x229E9E9E),
       child: SizedBox(
         height: 400.0,
         child: ListView.builder(
@@ -26,8 +25,8 @@ class ShimmerListBuilder extends HookWidget {
     );
 
     // Shimmer.fromColors(
-    //   baseColor: Colors.grey.withOpacity(0.5), // Color(0x669E9E9E),
-    //   highlightColor: Colors.grey.withOpacity(0.2), //Color(0x229E9E9E),
+    //   baseColor: Colors.grey.withValues(alpha:0.5), // Color(0x669E9E9E),
+    //   highlightColor: Colors.grey.withValues(alpha:0.2), //Color(0x229E9E9E),
     //   enabled: true,
     //   child: SizedBox(
     //     height: 400.0,

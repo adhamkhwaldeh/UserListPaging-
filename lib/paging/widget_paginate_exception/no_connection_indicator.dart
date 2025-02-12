@@ -38,9 +38,9 @@ import 'package:owwn_coding_challenge/paging/widget_paginate_exception/exception
 /// Indicates that a connection error occurred.
 class NoConnectionIndicator extends StatelessWidget {
   const NoConnectionIndicator({
-    Key? key,
+    super.key,
     this.onTryAgain,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTryAgain;
 

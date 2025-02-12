@@ -32,7 +32,6 @@
  * THE SOFTWARE.
  */
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,8 +42,8 @@ class ExceptionIndicator extends StatelessWidget {
     required this.assetName,
     this.message,
     this.onTryAgain,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String title;
   final String assetName;
@@ -67,7 +66,7 @@ class ExceptionIndicator extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: Get.textTheme.headline6,
+                style: Get.textTheme.titleLarge,
               ),
               if (message != null)
                 const SizedBox(

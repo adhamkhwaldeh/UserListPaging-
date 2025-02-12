@@ -1,4 +1,4 @@
-library user_list_core;
+library;
 
 /// A Calculator.
 class Calculator {

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:user_list_core/data/responses/sign_in_response.dart';
-import 'package:user_list_core/data/responses/user_list_response.dart';
-import 'package:common_library/di/di.dart';
+import 'package:user_list_core/di/di.dart';
 import 'package:user_list_core/repositories/general_repository.dart';
 
 // 1
@@ -25,13 +24,13 @@ class DioHeaderInterceptors extends InterceptorsWrapper {
     options.headers['Content-type'] = 'application/json';
     // options.headers['API Key'] = 'owwn-challenge-22bbdk';
     options.headers['X-API-KEY'] = 'owwn-challenge-22bbdk';
-    
+
     if (userModel?.access_token != null) {
       // Request newRequest = request.copyWith(headers: {
       //   AUTH_HEADER: BEARER + loginModel.authenticationToken,
       // });
       // options.headers[AUTH_HEADER] = BEARER + userModel!.token!;
-      options.headers[authHeader] = userModel!.access_token!;
+      options.headers[authHeader] = userModel!.access_token;
     }
     super.onRequest(options, handler);
   }
@@ -43,7 +42,7 @@ class DioHeaderInterceptors extends InterceptorsWrapper {
   // }
 
   // @override
-  // Future onError(DioError err) {
+  // Future onError(DioException err) {
   //   print("ERROR[${err?.response?.statusCode}] => PATH: ${err?.request?.path}");
   //   return super.onError(err);
   // }

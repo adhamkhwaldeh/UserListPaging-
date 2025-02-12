@@ -11,7 +11,7 @@ UserListResponse _$UserListResponseFromJson(Map<String, dynamic> json) =>
       users: (json['users'] as List<dynamic>)
           .map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
-      total: json['total'] as int,
+      total: (json['total'] as num).toInt(),
     );
 
 Map<String, dynamic> _$UserListResponseToJson(UserListResponse instance) =>

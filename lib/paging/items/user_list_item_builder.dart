@@ -1,11 +1,10 @@
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
-import 'package:common_library/helpers/dimens_helper.dart';
 import 'package:owwn_coding_challenge/helpers/routing_helper.dart';
 import 'package:user_list_core/data/models/user.dart';
-import 'package:common_library/di/di.dart';
+import 'package:user_list_core/helpers/dimensions_helper.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class UserListItemBuilder extends HookWidget {
@@ -13,21 +12,17 @@ class UserListItemBuilder extends HookWidget {
 
   const UserListItemBuilder({
     required this.model,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ColoredBox(
       color: Get.theme.cardColor,
       child: LayoutBuilder(
         builder: (context, constraints) => Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Hero(
@@ -45,30 +40,29 @@ class UserListItemBuilder extends HookWidget {
                       ),
                     ),
                   ),
-                ).p(DimensHelper.paddingSM),
+                ).p(DimensionsHelper.paddingSM),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      model.name ?? "",
-                      style: Get.textTheme.subtitle1
+                      model.name,
+                      style: Get.textTheme.titleMedium
                           ?.copyWith(fontWeight: FontWeight.w600),
-                    ).p(DimensHelper.paddingXSM),
+                    ).p(DimensionsHelper.paddingXSM),
                     Text(
-                      model.gender.name ?? "",
-                      style: Get.textTheme.subtitle1
+                      model.gender.name,
+                      style: Get.textTheme.titleMedium
                           ?.copyWith(fontWeight: FontWeight.w400),
-                    ).p(DimensHelper.paddingXSM),
+                    ).p(DimensionsHelper.paddingXSM),
                     Text(
-                      model.status.name ?? "",
-                      style: Get.textTheme.subtitle1
+                      model.status.name,
+                      style: Get.textTheme.titleMedium
                           ?.copyWith(fontWeight: FontWeight.w400),
-                    ).p(DimensHelper.paddingXSM),
+                    ).p(DimensionsHelper.paddingXSM),
                   ],
                 ).pOnly(
-                  left: DimensHelper.paddingMD,
-                  right: DimensHelper.paddingMD,
+                  left: DimensionsHelper.paddingMD,
+                  right: DimensionsHelper.paddingMD,
                 ),
               ],
             ),

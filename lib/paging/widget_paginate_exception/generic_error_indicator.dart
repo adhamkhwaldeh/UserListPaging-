@@ -38,9 +38,9 @@ import 'package:owwn_coding_challenge/paging/widget_paginate_exception/exception
 /// Indicates that an unknown error occurred.
 class GenericErrorIndicator extends StatelessWidget {
   const GenericErrorIndicator({
-    Key? key,
+    super.key,
     this.onTryAgain,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTryAgain;
 

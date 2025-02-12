@@ -1,19 +1,13 @@
-import 'dart:async';
-
-import 'package:common_library/bloc/base/base_bloc.dart';
-import 'package:common_library/bloc/base_event/base_event.dart';
-import 'package:common_library/bloc/base_state/base_state.dart';
+import 'dart:core';
+import 'package:user_list_core/bloc/base/base_bloc.dart';
+import 'package:user_list_core/bloc/base_event/base_event.dart';
+import 'package:user_list_core/bloc/base_state/base_state.dart';
 import 'package:user_list_core/data/posts/refresh_model.dart';
 import 'package:user_list_core/data/posts/sign_in_model.dart';
-import 'package:user_list_core/data/responses/sign_in_response.dart';
 import 'package:user_list_core/repositories/account_repository.dart';
 import 'package:user_list_core/repositories/general_repository.dart';
 
-import 'package:common_library/bloc/base_state/base_state_observable.dart';
-import 'package:common_library/bloc/base_state/base_state_observable2.dart';
-// import 'package:property_man_core/data/model/login_model.dart';
-// import 'package:property_man_core/repositories/account_repository.dart';
-// import 'package:property_man_core/repositories/general_repository.dart';
+import 'package:user_list_core/bloc/base_state/base_state_observable2.dart';
 
 class SignInBloc extends BaseBloc<BaseEvent, BaseState> {
   final AccountRepository repository;
@@ -21,24 +15,32 @@ class SignInBloc extends BaseBloc<BaseEvent, BaseState> {
   final GeneralRepository generalRepository;
 
   SignInBloc(this.repository, this.generalRepository)
-      : super(const BaseStateInitial());
+      : super(const BaseStateInitial()) {
+    on<BaseEventAuth>((event, emit) async {
+      try {
+        emit(const BaseStateProgress());
+        var dt =
+            await repository.auth(signInModel: SignInModel(email: event.email));
+        emit(const BaseStateProgressDismiss());
 
-  @override
-  Stream<BaseState> mapEventToState(BaseEvent event) async* {
-    yield* event.maybeMap(
-      auth: (value) {
-        return BaseStateObservable2.observeRequestFunction<SignInResponse>(
-            repository.auth(signInModel: SignInModel(email: value.email)));
-      },
-      refresh: (value) {
-        return BaseStateObservable2.observeRequestFunction<SignInResponse>(
-            repository.refresh(
-                refreshModel:
-                    RefreshModel(refresh_token: value.refresh_token)));
-      },
-      orElse: () =>
-          BaseStateObservable.yieldOneState(const BaseState.initial()),
-    );
+        emit(BaseStateLoadedSuccessfully(data: dt));
+      } catch (error) {
+        emit(BaseStateObservable2.getEither(error as Exception));
+      }
+    });
+
+    on<BaseEventRefresh>((event, emit) async {
+      try {
+        emit(const BaseStateProgress());
+        var dt = await repository.refresh(
+            refreshModel: RefreshModel(refresh_token: event.refresh_token));
+        emit(const BaseStateProgressDismiss());
+
+        emit(BaseStateLoadedSuccessfully(data: dt));
+      } catch (error) {
+        emit(BaseStateObservable2.getEither(error as Exception));
+      }
+    });
   }
 
   @override

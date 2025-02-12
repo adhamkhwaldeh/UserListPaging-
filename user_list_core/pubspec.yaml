@@ -4,67 +4,82 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: ">=3.3.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
+  # Json serialization
+  json_annotation: ^4.0.1
 
-  common_library:
-    path: ../common_library
+  # Bloc design pattern
+  flutter_bloc: ^9.0.0
+  hooked_bloc: ^1.6.0
+
+
+  # Great library for utilities , observation , navigation and dependencies
+  get: ^4.1.1
 
   # Dependency injection
   # get_it: ^6.0.0
-  get_it: ^7.2.0
+  get_it: ^8.0.3
   # injectable: ^1.2.2
-  injectable: ^1.5.3
+  injectable: ^2.5.0
 
   # Networking library
   # retrofit: ^2.0.0-beta1
-  retrofit: ^3.0.1+1
+  retrofit: ^4.4.2
+  dio: ^5.7.0
   # pretty_dio_logger: ^1.1.1
-  flutter_pretty_dio_logger: ^2.0.0
+  flutter_pretty_dio_logger: ^3.0.0
   # logger: ^1.0.0
-  logger: ^1.1.0
+  logger: ^2.5.0
 
   # Shared preferences
   shared_preferences: ^2.0.3 #for storing user credentials persistence
+
+  # Connectivity
+  connectivity_plus: ^6.1.3
+
+  # VelocityX for UI Chain features as swift UI
+  velocity_x: ^4.3.0
+
+  # Web responsive
+  sizer: ^3.0.5
+
+  #Freezed for unions/pattern-matching/copy.
+  freezed: ^2.0.4
+
   dartz: ^0.10.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
 
   # Build run for commands
   build_runner:
 
   # Json serialization
-  # json_serializable: ^4.1.0
   json_serializable: ^6.3.0
 
   #Networking generator
-  # retrofit_generator: ^2.0.0-beta3
-  retrofit_generator: ^4.0.1
+  retrofit_generator: ^9.1.9
 
-  # Connectivity
-  connectivity: ^3.0.3
-  
   # Dependency injection generator
-  # injectable_generator: ^1.2.2
-  injectable_generator: ^1.5.3
-
-  #Freezed for unions/pattern-matching/copy.
-  # freezed: ^0.14.1+1
-  freezed: ^2.0.4
+  injectable_generator: ^2.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/
+    - assets/images/
+    - assets/image_loader.html
+    - assets/double_ring_loading_io.gif
 
   # To add assets to your package, add an assets section, like this:
   # assets:

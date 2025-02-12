@@ -4,7 +4,6 @@ import 'package:flutter_pretty_dio_logger/flutter_pretty_dio_logger.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:user_list_core/api_services/interceptors/dio_header_interceptor.dart';
-import 'package:user_list_core/di/env.dart';
 
 @module
 abstract class NetworkDi {
@@ -14,22 +13,23 @@ abstract class NetworkDi {
     Dio dio = Dio();
     dio.interceptors.add(DioHeaderInterceptors());
 
-    if (Env.data.debugApiClient) {
-      dio.interceptors.add(
-        PrettyDioLogger(
-          requestHeader: true,
-          requestBody: true,
-          responseHeader: true,
-          responseBody: true,
-          error: true,
-          queryParameters: true,
-          showProcessingTime: true,
-          canShowLog: true,
-          // logPrint: true,
-          // compact: true,
-        ),
-      );
-    }
+    // if (Env.data.debugApiClient) {
+    dio.interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: true,
+        responseBody: true,
+        error: true,
+        queryParameters: true,
+        showProcessingTime: true,
+        canShowLog: true,
+        // logPrint: true,
+        // compact: true,
+      ),
+    );
+    // }
+
     // dio.interceptors.add(
     //   RetryOnConnectionChangeInterceptor(
     //     requestRetrier: DioConnectivityRequestRetrier(
